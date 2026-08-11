@@ -234,4 +234,3 @@ olist-ecommerce-fabric-dwh-powerbi/
 ## 👩‍💻 Author
 
 **Safaa Mahmoud**
-Data Engineering & Analytics | Microsoft Fabric · Power BI · SQL · Python · PySpark · Airflow
