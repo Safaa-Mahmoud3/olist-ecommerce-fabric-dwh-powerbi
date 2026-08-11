@@ -1,7 +1,8 @@
 # 🛒 Olist E-Commerce Data Warehouse
 
-**End-to-end analytics engineering project** — from raw CSV files to an executive-ready Power BI dashboard, built entirely on **Microsoft Fabric** using a **Medallion Architecture** (Bronze → Silver → Gold) and a **Galaxy Schema**.
+**End-to-end analytics engineering project** — from raw CSV files to an executive-ready Power BI dashboard, built entirely on **Microsoft Fabric** using a **Medallion Architecture** (Bronze → Silver → Gold) and a **Fact Constellation (Galaxy) Schema**.
 
+![Status](https://img.shields.io/badge/status-completed-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Microsoft%20Fabric-0078D4)
 ![BI Tool](https://img.shields.io/badge/BI-Power%20BI-F2C811)
 ![Model](https://img.shields.io/badge/schema-Fact%20Constellation-blue)
@@ -81,7 +82,13 @@ The warehouse uses a **Fact Constellation Schema**: three fact tables share a co
 | Dim_Customer | ✅ | ✅ | ✅ |
 | Dim_PaymentType | ❌ | ✅ | ❌ |
 
-> 📎 Conceptual, Logical, and Physical ER diagrams are available in `/docs`.
+### Data Model Diagrams
+
+| Logical Model | Physical Model |
+|---|---|
+| ![Logical Model](docs/Logical_data_model_diagrams.png) | ![Physical Model](docs/Physical_model_diagrams.png) |
+
+> 📎 Full Conceptual, Logical, and Physical model documentation is available in [`docs/Olist_Documentation.pdf`](docs/Olist_Documentation.pdf).
 
 ---
 
@@ -98,25 +105,48 @@ The warehouse uses a **Fact Constellation Schema**: three fact tables share a co
 | % Negative Reviews | Share of reviews with `review_score <= 2` |
 | Avg Revenue per Seller | `DIVIDE([Total Revenue], [Total Sellers], 0)` |
 
-Full measure list is documented in the [`/docs`](#-repository-structure) folder.
+> Full measure list is documented in [`docs/Olist_Documentation.pdf`](docs/Olist_Documentation.pdf).
 
 ---
 
 ## 📊 Power BI Dashboard
 
-A 9-page interactive report built on a **Direct Lake Semantic Model** (`Olist_Ecommerce_SemanticModel`):
+A 9-page interactive report built on a **Direct Lake Semantic Model** (`Olist_Ecommerce_SemanticModel`). The report also includes dynamic filtering, drill-through navigation, and AI-generated executive insights per page — see the full documentation for details.
 
-| Page | Purpose |
-|---|---|
-| 🏠 Home | Navigation hub across all dashboards |
-| 💰 Sales & Revenue | Revenue trends, YoY growth, geographic breakdown |
-| 🚚 Logistics & Delivery Performance | On-time delivery %, delay analysis by state |
-| 😊 Customer Insights & Satisfaction | Review score distribution, positive/negative review split |
-| 🏪 Seller | Seller performance, revenue per seller, delivery-vs-rating correlation |
-| 🏷️ Category | Top categories by revenue, rating, and freight cost |
-| 📦 Product | Product-photo-count vs. sales volume correlation |
-| 💳 Payment | Payment method mix, installment behavior by state |
-| 💡 Recommendations | Data-driven action items per business area |
+### Home
+![Home](powerbi/Home.png)
+
+### Sales & Revenue
+Revenue trends, YoY growth, and geographic breakdown.
+![Sales & Revenue](powerbi/Sales-Revenue.png)
+
+### Logistics & Delivery Performance
+On-time delivery %, delay analysis by state.
+![Logistics & Delivery Performance](powerbi/Logistics-Delivery-Performance.png)
+
+### Customer Insights & Satisfaction
+Review score distribution, positive/negative review split.
+![Customer Insights & Satisfaction](powerbi/Customer-Insights-Satisfaction.png)
+
+### Seller
+Seller performance, revenue per seller, delivery-vs-rating correlation.
+![Seller](powerbi/Seller.png)
+
+### Category
+Top categories by revenue, rating, and freight cost.
+![Category](powerbi/Category.png)
+
+### Product
+Product-photo-count vs. sales volume correlation.
+![Product](powerbi/Product.png)
+
+### Payment
+Payment method mix, installment behavior by state.
+![Payment](powerbi/Payment.png)
+
+### Recommendations
+Data-driven action items per business area.
+![Recommendations](powerbi/Recommendations.png)
 
 ### Key headline results
 - **R$ 15.8M** total revenue across **99K orders** (AOV: R$ 160.6)
@@ -137,7 +167,7 @@ The dashboard was designed to answer 16 core business questions, including:
 - Which product categories and SKUs drive revenue vs. high freight cost?
 - How do payment method and installment preferences vary geographically?
 
-> Full list of 16 questions available in [`/docs/analytical_questions.md`](#-repository-structure).
+> Full list of 16 questions available in [`docs/Olist_Documentation.pdf`](docs/Olist_Documentation.pdf).
 
 ---
 
@@ -157,23 +187,23 @@ The dashboard was designed to answer 16 core business questions, including:
 ## 📁 Repository Structure
 
 ```
-olist-ecommerce-data-warehouse/
+olist-ecommerce-fabric-dwh-powerbi/
 │
 ├── docs/
-│   ├── Olist_Documentation.pdf        # Full technical documentation
-│   ├── data_model_diagrams/           # Conceptual / Logical / Physical models
-│   └── dax_measures.md
-│
-├── dataflows/
-│   ├── DF_Bronze_Ecommerce/
-│   ├── DF_Silver_Ecommerce/
-│   └── DF_Gold_Ecommerce/
+│   ├── Olist_Documentation.pdf          # Full technical documentation
+│   ├── Logical_data_model_diagrams.png
+│   └── Physical_model_diagrams.png
 │
 ├── powerbi/
-│   └── Olist_Ecommerce_Dashboard.pbix
-│
-├── screenshots/
-│   └── (dashboard page previews)
+│   ├── Home.png
+│   ├── Sales-Revenue.png
+│   ├── Logistics-Delivery-Performance.png
+│   ├── Customer-Insights-Satisfaction.png
+│   ├── Seller.png
+│   ├── Category.png
+│   ├── Product.png
+│   ├── Payment.png
+│   └── Recommendations.png
 │
 └── README.md
 ```
@@ -182,10 +212,11 @@ olist-ecommerce-data-warehouse/
 
 ## 🚀 How to Explore
 
-1. Open `powerbi/Olist_Ecommerce_Dashboard.pbix` in Power BI Desktop
-2. Review the data model under **Model View** to explore the Fact Constellation Schema
-3. Navigate the report via the **Home Page** hub or the in-report navigation menu
-4. Full architecture and DAX documentation available in `/docs/Olist_Documentation.pdf`
+1. Browse the dashboard pages above for a full visual walkthrough of the report
+2. Review the data model diagrams under [Data Model](#️-data-model--fact-constellation-schema-galaxy-schema) to understand the Fact Constellation Schema
+3. Open [`docs/Olist_Documentation.pdf`](docs/Olist_Documentation.pdf) for the complete architecture, ETL steps, and full DAX measure library
+
+> ℹ️ This project's Semantic Model runs in **Direct Lake mode** directly on the Microsoft Fabric Data Warehouse, so there is no standalone `.pbix` file to download — the report is cloud-native and lives inside the Fabric workspace.
 
 ---
 
