@@ -2,7 +2,6 @@
 
 **End-to-end analytics engineering project** — from raw CSV files to an executive-ready Power BI dashboard, built entirely on **Microsoft Fabric** using a **Medallion Architecture** (Bronze → Silver → Gold) and a **Galaxy Schema**.
 
-![Status](https://img.shields.io/badge/status-completed-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Microsoft%20Fabric-0078D4)
 ![BI Tool](https://img.shields.io/badge/BI-Power%20BI-F2C811)
 ![Model](https://img.shields.io/badge/schema-Fact%20Constellation-blue)
