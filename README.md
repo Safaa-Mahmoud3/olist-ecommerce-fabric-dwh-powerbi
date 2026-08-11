@@ -1,6 +1,6 @@
 # 🛒 Olist E-Commerce Data Warehouse
 
-**End-to-end analytics engineering project** — from raw CSV files to an executive-ready Power BI dashboard, built entirely on **Microsoft Fabric** using a **Medallion Architecture** (Bronze → Silver → Gold) and a **Fact Constellation (Galaxy) Schema**.
+**End-to-end analytics engineering project** — from raw CSV files to an executive-ready Power BI dashboard, built entirely on **Microsoft Fabric** using a **Medallion Architecture** (Bronze → Silver → Gold) and a **Galaxy Schema**.
 
 ![Status](https://img.shields.io/badge/status-completed-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Microsoft%20Fabric-0078D4)
